@@ -1,4 +1,5 @@
-require "bundler/setup"
+# require "bundler/setup"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require "marvel_best_superheroes"
 
 RSpec.configure do |config|

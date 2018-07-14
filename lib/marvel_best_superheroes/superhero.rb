@@ -1,15 +1,15 @@
-require_relative "./allSuperheroes.rb"
 require "open-uri"
 require "pry"
+require_relative "./allSuperheroes.rb"
 
 class Superheroes
 
     attr_accessor :name, :biography, :supername, :realname, :gender, :charactertype, :birthday, :died, :powers
 
-    BASEPATH = "https://comicvine.gamespot.com/spider-man/4005-1443/"
+    BASEPATH = "https://comicvine.gamespot.com/"
     @@heroes = []
 
-    def initialize(name, biography, supername, realname, gender, charactertype, birthday, died, powers)
+    def initialize(name = nil, biography = nil, supername = nil, realname = nil, gender = nil, charactertype = nil, birthday = nil, died = nil, powers = nil)
         @name = name
         @biography = biography
         @supername = supername

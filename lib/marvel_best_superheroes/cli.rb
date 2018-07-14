@@ -1,5 +1,5 @@
-require_relative "../lib/allSuperheroes.rb"
-require_relative "../lib/superhero.rb"
+require_relative "./allSuperheroes.rb"
+require_relative "./superhero.rb"
 require 'nokogiri'
 require 'colorize'
 
@@ -14,6 +14,8 @@ class CommandLineInterface
         puts "*********************oooOOOooo*********************".colorize(:light_blue)
         AllSuperheroes.all.each do |hero|
             puts "#{hero.name}"
+        end
+    end
 
     def display_AllSuperheroess
         Superheroes.all.each do |hero|
