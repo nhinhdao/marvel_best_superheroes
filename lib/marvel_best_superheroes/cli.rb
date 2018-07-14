@@ -5,9 +5,6 @@ require 'colorize'
 
 class CommandLineInterface
 
-    #website where all the information of Marvel Superheroes comes from
-    BASEFILE = "https://comicvine.gamespot.com/profile/noahmaximillion/lists/top-100-marvel-superheroes/48749/"
-
     def display
         list_all_superheroes
     end

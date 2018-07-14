@@ -1,4 +1,4 @@
-require_relative "./allsuperheroes.rb"
+require_relative "./allSuperheroes.rb"
 require "open-uri"
 require "pry"
 
@@ -28,6 +28,7 @@ class Superheroes
     end
 
     def self.get_all_heroes_info
+        binding.pry
         allsites.each do |site|
             Nokogiri::HTML(open(site)).each do |info|
                 name = Nokogiri::HTML(open(site)).css("h1").text.strip
@@ -41,7 +42,7 @@ class Superheroes
                 powers = info.css("tr")[11].css("div.bar").text
                 self.new(name, biography, supername, realname, gender, charactertype, birthday, died, powers)
             end
-        endq
+        end
     end
 
     def self.all

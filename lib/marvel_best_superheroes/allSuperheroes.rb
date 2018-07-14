@@ -17,7 +17,7 @@ class AllSuperheroes
     end
 
     def self.scrape_all_superheroes
-        binding.pry
+        # binding.pry
         Nokogiri::HTML(open(SITE)).css("ul.editorial"). each do |hero|
             self.new(hero.css("div h3"), hero.css("a").attribute("href"))
         end
