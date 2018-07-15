@@ -41,6 +41,7 @@ class Superheroes
                 birthday = doc[9].text
                 died = doc[10].text
                 powers = doc[11].text
+                
                 self.new(name, biography, supername, realname, gender, charactertype, birthday, died, powers)
             end
             Nokogiri::HTML(open(site)).css("table.table tbody").css("div span")[2].text
