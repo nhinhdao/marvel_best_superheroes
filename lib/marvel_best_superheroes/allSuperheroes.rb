@@ -1,4 +1,5 @@
 require 'pry'
+require "nokogiri"
 require 'open-uri'
 
 class AllSuperheroes
@@ -16,15 +17,24 @@ class AllSuperheroes
         @@allsuperheroes << self
     end
 
+    # binding.pry
+    def getList
+        Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
+    end
+
+    def getAllSites
+        Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
+    end
+
     def self.scrape_all_superheroes
-        binding.pry
-        Nokogiri::HTML(open(SITE)).css("ul.editorial"). each do |hero|
-            self.new(hero.css("div h3"), hero.css("a").attribute("href"))
+        for x in (0..getList.size) do
+            self.new(getList[x], getAllSites[x])
         end
     end
 
     def self.all
+        # binding.pry
         @@allsuperheroes
     end
-
+    binding.pry
 end
