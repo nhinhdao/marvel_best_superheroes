@@ -9,32 +9,31 @@ class AllSuperheroes
     SITE = "https://comicvine.gamespot.com/profile/noahmaximillion/lists/top-100-marvel-superheroes/48749/"
 
     #array contains all superheroes information
-    @@allsuperheroes = []
+    @@all = []
 
     def initialize(name = nil, url = nil)
         @name = name
         @url = url
-        @@allsuperheroes << self
+        @@all << self
     end
 
-    # binding.pry
-    def getList
-        Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
-    end
+    # def getList
+    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
+    # end
+    #
+    # def getAllSites
+    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
+    # end
 
-    def getAllSites
-        Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
-    end
-
-    def self.scrape_all_superheroes
-        for x in (0..getList.size) do
-            self.new(getList[x], getAllSites[x])
+    def self.create_all_superheroes
+        Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li").map do |hero|
+            name = hero.css("h3").text
+            url = hero.css("a").attribute("href").value
+            self.new(name, url)
         end
     end
 
     def self.all
-        # binding.pry
-        @@allsuperheroes
+        @@all
     end
-    binding.pry
 end
