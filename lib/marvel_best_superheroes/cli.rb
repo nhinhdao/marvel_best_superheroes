@@ -11,13 +11,13 @@ class CommandLineInterface
     def display
         AllSuperheroes.create_all_superheroes
 
-        puts "\nHere shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:bold).colorize(:blue)
-        puts "*********************oooOOOooo*********************\n"
-        puts "What BADGE you are interested in:\n".colorize(:light_blue)
-        puts "1. OP - TOP 10 MOST BADASS SUPERHEROES".colorize(:light_blue)
-        puts "2. LEGENDARY - SUPERHEROES RANKED 11-25".colorize(:light_blue)
-        puts "3. SUPER-DUPER - SUPERHEROES RANKED 26-50".colorize(:light_blue)
-        puts "4. INCREDIBLE - SUPERHEROES RANKED 51-100".colorize(:light_blue)
+        puts "\nHere shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:blue)
+        puts "....................................................\n"
+        puts "\nWhat BADGE you are interested in:\n".colorize(:blue)
+        puts "1. OP - TOP 10 MOST BADASS SUPERHEROES".colorize(:blue)
+        puts "2. LEGENDARY - SUPERHEROES RANKED 11-25".colorize(:blue)
+        puts "3. SUPER-DUPER - SUPERHEROES RANKED 26-50".colorize(:blue)
+        puts "4. INCREDIBLE - SUPERHEROES RANKED 51-100".colorize(:blue)
 
         get_badge
 
@@ -29,7 +29,8 @@ class CommandLineInterface
     end
 
     def get_other_input
-        puts "Do you want to learn more about other Superheroes? Type 'Y/Yes' or type 'Exit/No' to end the program"
+        puts "Do you want to learn more about other Superheroes?"
+        puts "Type 'Y/Yes' or type 'Exit/No' to end the program"
         input = gets.strip
         if input.upcase == "Y" or input.upcase == "YES"
             get_badge
@@ -39,6 +40,7 @@ class CommandLineInterface
         elsif input.upcase == "EXIT" || input.upcase == "N" || input.upcase == "NO"
             puts "\n___May the FORCE be with you!!!___\n".colorize(:blue)
         else
+            puts "\n Invalid input"
             get_other_input
         end
     end
@@ -49,17 +51,17 @@ class CommandLineInterface
         input = gets.strip
         case input
             when "1" 
-                puts "\n Here comes TOP 10 MOST BADASS/OP SUPERHEROES \n".colorize(:blue).colorize(:bold)
+                puts "\n Here comes TOP 10 MOST BADASS/OP SUPERHEROES \n".colorize(:blue)
                 list_all_superheroes(AllSuperheroes.all[0..9])
             when "2"
-                puts "\n Here comes the Legendary Superheroes \n".colorize(:blue).colorize(:bold)
-                list_all_superheroes(AllSuperheroes.all[11..25])
+                puts "\n Here comes the Legendary Superheroes \n".colorize(:blue)
+                list_all_superheroes(AllSuperheroes.all[10..24])
             when "3"
-                puts "\n Here comes the Super-duper Superheroes \n".colorize(:blue).colorize(:bold)
-                list_all_superheroes(AllSuperheroes.all[26..50])
-            when "3"
-                puts "\n Here comes the Incredible Superheroes \n".colorize(:blue).colorize(:bold)
-                list_all_superheroes(AllSuperheroes.all[51..100])
+                puts "\n Here comes the Super-duper Superheroes \n".colorize(:blue)
+                list_all_superheroes(AllSuperheroes.all[25..49])
+            when "4"
+                puts "\n Here comes the Incredible Superheroes \n".colorize(:blue)
+                list_all_superheroes(AllSuperheroes.all[50..100])
             else 
                 puts "Invalid input"
                 get_badge
@@ -69,12 +71,13 @@ class CommandLineInterface
     def get_superhero_site
         puts "\nWhich superhero do you want to learn more about? "
         puts "Please type in superhero number:"
-        input = gets.strip.to_i - 1
+        input = gets.strip.to_i-1
         if input >= 0 && input < all_superheroes_sites.size
-            puts "Please wait while we evoke #{all_superheroes_names[input]}...\n"
+            puts "\nPlease wait while we evoke #{all_superheroes_names[input]}...\n"
             Superheroes.get_superhero_infos(all_superheroes_sites[input])
         else 
             puts "Invalid input"
+            puts "Please enter number in above selection"
             get_superhero_site
         end
     end
@@ -104,21 +107,20 @@ class CommandLineInterface
     #Print out each Superhero's informations in desired format
     def display_superhero
         Superheroes.all.each do |hero|
-            puts "#{hero.name.upcase}".colorize(:blue).colorize(:bold)
+            puts "\n#{hero.name.upcase}".colorize(:blue)
             puts ""
-            puts "  > Biography:".colorize(:blue)
+            puts "  <> Biography:".colorize(:blue)
             puts ""
             puts "#{hero.biography}"
             puts ""
-            puts "  > General Information: ".colorize(:blue).colorize(:bold)
-            puts ""
-            puts "    - Super name:".colorize(:light_blue) + "     #{hero.supername}"
-            puts "    - Real name:".colorize(:light_blue) + "      #{hero.realname}"
-            puts "    - Gender:".colorize(:light_blue) + "         #{hero.gender}"
-            puts "    - Character Type:".colorize(:light_blue) + " #{hero.charactertype}"
-            puts "    - Birthday:".colorize(:light_blue) + "       #{hero.birthday}"
-            puts "    - Died:".colorize(:light_blue) + "           #{hero.died}"
-            puts "    - Powers:".colorize(:light_blue) +"          #{hero.powers}"
+            puts "  <> General Information:".colorize(:blue)
+            puts "\n    - Super name:".colorize(:blue) + "     #{hero.supername}"
+            puts "\n    - Real name:".colorize(:blue) + "      #{hero.realname}"
+            puts "\n    - Aliases:".colorize(:blue) + "      #{hero.aliases}"
+            puts "\n    - Gender:".colorize(:blue) + "         #{hero.gender}"
+            puts "\n    - Character Type:".colorize(:blue) + " #{hero.charactertype}"
+            puts "\n    - Birthday:".colorize(:blue) + "       #{hero.birthday}"
+            puts "\n    - Powers:".colorize(:blue) +"          #{hero.powers}"
         end
     end
 
