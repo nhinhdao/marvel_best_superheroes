@@ -106,19 +106,18 @@ class CommandLineInterface
             puts "#{hero.name.upcase}".colorize(:blue).colorize(:bold)
             puts ""
             puts "  > Biography:".colorize(:blue)
-            puts "  #{hero.biography}"
+            puts ""
+            puts "#{hero.biography}"
             puts ""
             puts "  > General Information: ".colorize(:blue).colorize(:bold)
             puts ""
-            puts "      - Super name:".colorize(:light_blue) + " #{hero.supername}"
-            puts "      - Real name:".colorize(:light_blue) + " #{hero.realname}"
-            puts "      - Gender:".colorize(:light_blue) + " #{hero.gender}"
-            puts "      - Character Type:".colorize(:light_blue) + " #{hero.charactertype}"
-            puts "      - Birthday:".colorize(:light_blue) + " #{hero.birthday}"
-            puts "      - Died:".colorize(:light_blue) 
-            puts "          #{hero.died}"
-            puts "      - Powers:".colorize(:light_blue)
-            puts "          #{hero.powers}"
+            puts "    - Super name:".colorize(:light_blue) + "     #{hero.supername}"
+            puts "    - Real name:".colorize(:light_blue) + "      #{hero.realname}"
+            puts "    - Gender:".colorize(:light_blue) + "         #{hero.gender}"
+            puts "    - Character Type:".colorize(:light_blue) + " #{hero.charactertype}"
+            puts "    - Birthday:".colorize(:light_blue) + "       #{hero.birthday}"
+            puts "    - Died:".colorize(:light_blue) + "           #{hero.died}"
+            puts "    - Powers:".colorize(:light_blue) +"          #{hero.powers}"
         end
     end
 
