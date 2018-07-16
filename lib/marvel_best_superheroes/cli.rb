@@ -11,7 +11,7 @@ class CommandLineInterface
     def display
         AllSuperheroes.create_all_superheroes
 
-        puts "Here shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:bold).colorize(:orange)
+        puts "Here shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:bold).colorize(:blue)
         puts "*********************oooOOOooo*********************"
         puts ""
         puts "What BADGE you are interested in:".colorize(:light_blue)
@@ -39,7 +39,8 @@ class CommandLineInterface
             display_superhero
             get_other_input
         elsif input.upcase == "EXIT" || input.upcase == "N" || input.upcase == "NO"
-            puts "May the FORCE be with you!!!"
+            puts ""
+            puts "___May the FORCE be with you!!!___".colorize(:blue)
             puts ""
         else
             get_other_input
@@ -51,7 +52,7 @@ class CommandLineInterface
         puts ""
         puts "Please type in the Badge number to access: "
         input = gets.strip
-        puts "Here comes the Superheroes"
+        puts "Here comes the Superheroes".colorize(:blue).colorize(:bold)
         case input
             when "1" 
                 list_all_superheroes(AllSuperheroes.all[0..9])
@@ -69,10 +70,10 @@ class CommandLineInterface
 
     def get_superhero_site
         puts ""
-        puts "Which superhero do you want to learn more about: "
+        puts "Which superhero do you want to learn more about? "
         puts "Please type in superhero number:"
         input = gets.strip.to_i - 1
-        puts "Please wait while we evoke your Superhero"
+        puts "Please wait while we evoke your Superhero..."
         puts ""
         if input >= 0 && input < all_superheroes_sites.size
             Superheroes.get_superhero_infos(all_superheroes_sites[input])
