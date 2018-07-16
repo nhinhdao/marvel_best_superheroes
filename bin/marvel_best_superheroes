@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require_relative '../lib/marvel_best_superheroes'
 
-MarvelBestSuperheroes::CommandLineInterface.new.display
+CommandLineInterface.new.display

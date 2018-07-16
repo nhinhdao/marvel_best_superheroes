@@ -37,8 +37,10 @@ class CommandLineInterface
             get_badge
             get_superhero_site
             display_superhero
+            get_other_input
         elsif input.upcase == "EXIT" || input.upcase == "N" || input.upcase == "NO"
             puts "May the FORCE be with you!!!"
+            puts ""
         else
             get_other_input
         end
@@ -46,8 +48,10 @@ class CommandLineInterface
 
 
     def get_badge
-        puts "Please type in the Badge number to access:"
+        puts ""
+        puts "Please type in the Badge number to access: "
         input = gets.strip
+        puts "Here comes the Superheroes"
         case input
             when "1" 
                 list_all_superheroes(AllSuperheroes.all[0..9])
@@ -60,15 +64,17 @@ class CommandLineInterface
             else 
                 puts "Invalid input"
                 get_badge
-            end
         end
     end
 
     def get_superhero_site
+        puts ""
         puts "Which superhero do you want to learn more about: "
         puts "Please type in superhero number:"
-        input = gets.strip.to_1 - 1
-        if input >= 0 && input < allsites_superheroes_sites.size
+        input = gets.strip.to_i - 1
+        puts "Please wait while we evoke your Superhero"
+        puts ""
+        if input >= 0 && input < all_superheroes_sites.size
             Superheroes.get_superhero_infos(all_superheroes_sites[input])
         else 
             puts "Invalid input"
@@ -77,10 +83,8 @@ class CommandLineInterface
     end
 
 
-    end
-
     def list_all_superheroes(heroes)
-        heroes.all.each do |hero|
+        heroes.each do |hero|
             puts "#{hero.name}"
         end
     end
@@ -89,6 +93,7 @@ class CommandLineInterface
     def all_superheroes_sites
         AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
     end
+
     #create a superhero base on user input
     def create_superhero(site)
         Superheroes.get_superhero_infos(site)
@@ -99,17 +104,17 @@ class CommandLineInterface
         Superheroes.all.each do |hero|
             puts "#{hero.name.upcase}".colorize(:blue).colorize(:bold)
             puts ""
-            puts "  > Biography:".colorize(:purple)
-            puts "      #{hero.biography}"
+            puts "  > Biography:".colorize(:blue)
+            puts "  #{hero.biography}"
             puts ""
-            puts "  > General Information: ".colorize(:purple).colorize(:bold)
+            puts "  > General Information: ".colorize(:blue).colorize(:bold)
             puts ""
             puts "      - Super name:".colorize(:light_blue) + " #{hero.supername}"
             puts "      - Real name:".colorize(:light_blue) + " #{hero.realname}"
             puts "      - Gender:".colorize(:light_blue) + " #{hero.gender}"
             puts "      - Character Type:".colorize(:light_blue) + " #{hero.charactertype}"
             puts "      - Birthday:".colorize(:light_blue) + " #{hero.birthday}"
-            puts "      - Died:".colorize(:light_blue) + 
+            puts "      - Died:".colorize(:light_blue) 
             puts "          #{hero.died}"
             puts "      - Powers:".colorize(:light_blue)
             puts "          #{hero.powers}"
