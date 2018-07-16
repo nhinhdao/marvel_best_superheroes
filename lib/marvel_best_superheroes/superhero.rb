@@ -21,13 +21,14 @@ class Superheroes
         @powers = powers
         @@all << self
     end
-
     
     def allsites
         AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
     end
 
     def self.get_superhero_infos(site)
+
+        Superheroes.reset
 
         doc = Nokogiri::HTML(open(site)).css("table.table tbody")
         name = Nokogiri::HTML(open(site)).css("h1").text.strip
@@ -45,5 +46,9 @@ class Superheroes
 
     def self.all
         @@all
+    end
+
+    def self.reset
+        @@all = []
     end
 end

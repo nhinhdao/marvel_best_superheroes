@@ -31,7 +31,7 @@ class CommandLineInterface
     end
 
     def get_other_input
-        puts "Do you want to learn more about other Superheroes? Type 'Y/Yes' or type 'Exit' to end the program"
+        puts "Do you want to learn more about other Superheroes? Type 'Y/Yes' or type 'Exit/No' to end the program"
         input = gets.strip
         if input.upcase == "Y" or input.upcase == "YES"
             get_badge
@@ -52,15 +52,18 @@ class CommandLineInterface
         puts ""
         puts "Please type in the Badge number to access: "
         input = gets.strip
-        puts "Here comes the Superheroes".colorize(:blue).colorize(:bold)
         case input
             when "1" 
+                puts "\n Here comes TOP 10 MOST BADASS/OP SUPERHEROES \n".colorize(:blue).colorize(:bold)
                 list_all_superheroes(AllSuperheroes.all[0..9])
             when "2"
+                puts "\n Here comes the Legendary Superheroes \n".colorize(:blue).colorize(:bold)
                 list_all_superheroes(AllSuperheroes.all[11..25])
             when "3"
+                puts "\n Here comes the Super-duper Superheroes \n".colorize(:blue).colorize(:bold)
                 list_all_superheroes(AllSuperheroes.all[26..50])
             when "3"
+                puts "\n Here comes the Incredible Superheroes \n".colorize(:blue).colorize(:bold)
                 list_all_superheroes(AllSuperheroes.all[51..100])
             else 
                 puts "Invalid input"
@@ -73,9 +76,9 @@ class CommandLineInterface
         puts "Which superhero do you want to learn more about? "
         puts "Please type in superhero number:"
         input = gets.strip.to_i - 1
-        puts "Please wait while we evoke your Superhero..."
-        puts ""
         if input >= 0 && input < all_superheroes_sites.size
+            puts "Please wait while we evoke #{all_superheroes_names[input]}..."
+            puts ""
             Superheroes.get_superhero_infos(all_superheroes_sites[input])
         else 
             puts "Invalid input"
@@ -93,6 +96,10 @@ class CommandLineInterface
     #collect each hero website from AllSuperheroes
     def all_superheroes_sites
         AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
+    end
+
+    def all_superheroes_names
+        AllSuperheroes.all.map { |e|  "#{e.name}".split(". ")[1]}
     end
 
     #create a superhero base on user input
