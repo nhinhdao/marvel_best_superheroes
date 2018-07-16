@@ -31,12 +31,3 @@ class AllSuperheroes
     end
     
 end
-
-
-    # def getList
-    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
-    # end
-    #
-    # def getAllSites
-    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
-    # end
