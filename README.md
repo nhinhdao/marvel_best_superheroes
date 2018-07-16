@@ -1,8 +1,8 @@
 # MarvelBestSuperheroes
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/marvel_best_superheroes`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to _Nhinh_Dao_ first ruby gem :D. I wanted to make this CLI gem because I have been so into Marvel Superheroes movies lately. In my opinion, the webpage I scraped didn't have the most accurate rank but at least they have all the informations of individual superheroes. For the thorough sources, please visit https://www.marvel.com/characters
 
-TODO: Delete this and the text above, and describe your gem
+This gem provides a CLI to view top 100 Marvels superheroes of all time with informations included super name, real name, birthday, died, character type, gender, and powers.
 
 ## Installation
 
@@ -22,7 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the command below and follow screen prompts
+
+    $ marvel_best_superheroes
+
 
 ## Development
 
