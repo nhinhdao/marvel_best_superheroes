@@ -1,3 +1,4 @@
+require "nokogiri"
 require "open-uri"
 require "pry"
 require_relative "./allSuperheroes.rb"
@@ -28,28 +29,25 @@ class Superheroes
     end
 
     def self.get_all_heroes_info
-        binding.pry
+        # binding.pry
         allsites.each do |site|
-            doc = Nokogiri::HTML(open(site)).css("table.table tbody").css("div span")
-            # Nokogiri::HTML(open(site)).css("table.table tbody").each do |info|
-                name = Nokogiri::HTML(open(site)).css("h1").text.strip
-                biography = Nokogiri::HTML(open(site)).css("h3.display-view").text
-                supername = doc[0].text
-                realname = doc[1].text
-                gender = doc[5].text
-                charactertype = doc[6].text
-                birthday = doc[9].text
-                died = doc[10].text
-                powers = doc[11].text
+
+            doc = Nokogiri::HTML(open(site)).css("table.table tbody")
+            name = Nokogiri::HTML(open(site)).css("h1").text.strip
+            biography = Nokogiri::HTML(open(site)).css("h3.display-view").text
+            supername = doc.css("div[data-field='realName']").text.strip.split(/\n/).first
+            realname = doc.css("div[data-field='realName']").text.strip.split(/\n/).last.strip
+            gender = doc.css("div[data-field='gender']").text.strip
+            charactertype = doc.css("div[data-field='origin']").text.strip
+            birthday = doc.css("div[data-field='birthday']").text.strip
+            died = doc.css("div[data-field='issuesDied']").text
+            powers = doc.css("div[data-field='powers']").text
                 
-                self.new(name, biography, supername, realname, gender, charactertype, birthday, died, powers)
-            end
-            Nokogiri::HTML(open(site)).css("table.table tbody").css("div span")[2].text
+            self.new(name, biography, supername, realname, gender, charactertype, birthday, died, powers)
         end
     end
-    doc = Nokogiri::HTML(open(site)).css("table.table tbody").css("div")[data-field="gender"].text
+
     def self.all
         @@all
     end
-
 end

@@ -17,13 +17,6 @@ class AllSuperheroes
         @@all << self
     end
 
-    # def getList
-    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
-    # end
-    #
-    # def getAllSites
-    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
-    # end
 
     def self.create_all_superheroes
         Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li").map do |hero|
@@ -36,4 +29,14 @@ class AllSuperheroes
     def self.all
         @@all
     end
+    
 end
+
+
+    # def getList
+    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("h3").map {|hero| hero.text}
+    # end
+    #
+    # def getAllSites
+    #     Nokogiri::HTML(open(SITE)).css("ul.editorial").css("li a").map { |e|  e.attribute("href").value}
+    # end
