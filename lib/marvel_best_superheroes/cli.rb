@@ -2,10 +2,15 @@ require_relative "./allSuperheroes.rb"
 require_relative "./superhero.rb"
 require 'nokogiri'
 require 'colorize'
+require 'pry'
 
 class CommandLineInterface
 
+    BASEPATH = "https://comicvine.gamespot.com"
+
     def display
+        AllSuperheroes.create_all_superheroes
+        allsites.each {|site| Superheroes.get_all_heroes_info(site)}
         list_all_superheroes
     end
 
@@ -16,6 +21,12 @@ class CommandLineInterface
             puts "#{hero.name}"
         end
     end
+    
+    #collect each hero website from AllSuperheroes
+    def allsites
+        AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
+    end
+
 
     def display_AllSuperheroess
         Superheroes.all.each do |hero|
@@ -35,5 +46,7 @@ class CommandLineInterface
             puts "          #{hero.powers}"
         end
     end
+
+    binding.pry
 
 end
