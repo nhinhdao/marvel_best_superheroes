@@ -27,7 +27,7 @@ class Superheroes
         AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
     end
 
-    def self.get_all_heroes_info(site)
+    def self.get_superhero_infos(site)
 
         doc = Nokogiri::HTML(open(site)).css("table.table tbody")
         name = Nokogiri::HTML(open(site)).css("h1").text.strip
