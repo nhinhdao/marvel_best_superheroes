@@ -11,11 +11,9 @@ class CommandLineInterface
     def display
         AllSuperheroes.create_all_superheroes
 
-        puts "Here shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:bold).colorize(:blue)
-        puts "*********************oooOOOooo*********************"
-        puts ""
-        puts "What BADGE you are interested in:".colorize(:light_blue)
-        puts ""
+        puts "\nHere shows TOP 100 MARVEL SUPERHEROES of all time: ".colorize(:bold).colorize(:blue)
+        puts "*********************oooOOOooo*********************\n"
+        puts "What BADGE you are interested in:\n".colorize(:light_blue)
         puts "1. OP - TOP 10 MOST BADASS SUPERHEROES".colorize(:light_blue)
         puts "2. LEGENDARY - SUPERHEROES RANKED 11-25".colorize(:light_blue)
         puts "3. SUPER-DUPER - SUPERHEROES RANKED 26-50".colorize(:light_blue)
@@ -39,9 +37,7 @@ class CommandLineInterface
             display_superhero
             get_other_input
         elsif input.upcase == "EXIT" || input.upcase == "N" || input.upcase == "NO"
-            puts ""
-            puts "___May the FORCE be with you!!!___".colorize(:blue)
-            puts ""
+            puts "\n___May the FORCE be with you!!!___\n".colorize(:blue)
         else
             get_other_input
         end
@@ -49,8 +45,7 @@ class CommandLineInterface
 
 
     def get_badge
-        puts ""
-        puts "Please type in the Badge number to access: "
+        puts "\nPlease type in the Badge number to access: "
         input = gets.strip
         case input
             when "1" 
@@ -72,13 +67,11 @@ class CommandLineInterface
     end
 
     def get_superhero_site
-        puts ""
-        puts "Which superhero do you want to learn more about? "
+        puts "\nWhich superhero do you want to learn more about? "
         puts "Please type in superhero number:"
         input = gets.strip.to_i - 1
         if input >= 0 && input < all_superheroes_sites.size
-            puts "Please wait while we evoke #{all_superheroes_names[input]}..."
-            puts ""
+            puts "Please wait while we evoke #{all_superheroes_names[input]}...\n"
             Superheroes.get_superhero_infos(all_superheroes_sites[input])
         else 
             puts "Invalid input"
@@ -98,6 +91,7 @@ class CommandLineInterface
         AllSuperheroes.all.map { |e|  "#{BASEPATH}#{e.url}"}
     end
 
+    #this method is called when program evokes individual superhero
     def all_superheroes_names
         AllSuperheroes.all.map { |e|  "#{e.name}".split(". ")[1]}
     end
