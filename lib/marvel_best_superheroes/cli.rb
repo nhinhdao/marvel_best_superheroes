@@ -20,11 +20,8 @@ class CommandLineInterface
         puts "4. INCREDIBLE - SUPERHEROES RANKED 51-100".yellow
 
         get_badge
-
         get_superhero_site
-
         display_superhero
-
         get_other_input
     end
 
@@ -110,14 +107,14 @@ class CommandLineInterface
             puts "\n#{hero.name.upcase}\n".bold.red
             puts "  <> Biography:\n".bold.blue
             puts "#{hero.biography}\n"
-            puts "  <> General Information:".bold.blue
+            puts "\n  <> General Information:".bold.blue
             puts "\n    - Super name:".bold.blue + "     #{hero.supername}"
             puts "\n    - Real name:".bold.blue + "      #{hero.realname}"
             puts "\n    - Aliases:".bold.blue + "      #{hero.aliases}"
             puts "\n    - Gender:".bold.blue + "         #{hero.gender}"
             puts "\n    - Character Type:".bold.blue + " #{hero.charactertype}"
             puts "\n    - Birthday:".bold.blue + "       #{hero.birthday}"
-            puts "\n    - Powers:".colorize(:blue).bold + "          #{hero.powers}"
+            puts "\n    - Powers:".colorize(:blue).bold + "#{hero.powers}"
         end
     end
 
