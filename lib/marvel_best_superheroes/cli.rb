@@ -95,7 +95,7 @@ class MarvelBestSuperheroes::CommandLineInterface
     end
 
 
-    #Print out chosen Superhero's informations in desired format
+    #Print out user chosen Superhero's informations in desired format
     def display_superhero(input)
         hero = MarvelBestSuperheroes::Superheroes.all[input]
         puts "\n#{hero.name.upcase}\n".bold.red
