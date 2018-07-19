@@ -87,7 +87,7 @@ class MarvelBestSuperheroes::CommandLineInterface
     end
 
 
-    #list only SH names who are listed in chosen BADGE/TIER
+    #list only SH names who are listed in chosen TIER
     def list_all_superheroes(heroes)
         heroes.each do |hero|
             puts "#{hero.index}. #{hero.name}"
