@@ -22,7 +22,7 @@ class MarvelBestSuperheroes::Superheroes
     end
 
 
-    #after scrape from invidual page, add the rest attributes to chosen SH
+    #after scrape from invidual page, add the rest attributes to chosen SHs
     def add_details_from_file(file2)
         # binding.pry
         #file2 = {bio: ..., supername: ..., realname: ..., gender:..., aliases:..., powers: ...}
