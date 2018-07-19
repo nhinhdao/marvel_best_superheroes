@@ -16,7 +16,7 @@ class MarvelBestSuperheroes::Scraper
             collection << hero_info
         end
         collection
-        #collection = [{index:..., name:..., url:...}, {index:..., name:..., url:...}]
+        #collection = [{index:..., name:..., url:...}, {index:..., name:..., url:...},...]
     end
 
 
